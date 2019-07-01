@@ -39,8 +39,8 @@
                             fwrite($wfile,$c_line);
                             $count++;
                         }
-                    }
-                    
+                  }
+                  echo "\t\t -> full.m3u\n";   
                     if($count >= 500)
                     {
                         $j = 1;
@@ -49,11 +49,9 @@
                         $limit = 500;
                         while($j <= $total_file)
                         {
-                            // echo $start_index . "\n";
                             $desired_file = fopen("./".$folder_name."/full.m3u",'r');
                             if($part = fopen("./".$folder_name."/part".$j.".m3u",'w'))
                             {
-                                echo $start_index . "-->" . $limit . "\n";
                                 while($d_line = fgets($desired_file))
                                 {
                                     
@@ -67,17 +65,16 @@
                                 }
                                
                             }
-                         
-                            // $start_index += 500;
+				echo "\t\t -> part".$j.".m3u\n";
                             $limit *= 2;
                             $j++;
                         }
-                        echo "-------------------\n";
                     }
                 }
-
+		echo "✔️ " . " ". $folder_name . "\n";
             }
         }
-
+	
     }
+	echo "Create with ❤ by Youssef Benadda\n";
     fclose($file);
